@@ -13,7 +13,7 @@ $(function() {
     var photo;
     var startButton;
 
-    var startup = function() {
+    var startVideo = function() {
       video = document.getElementById('video');
       canvas = document.getElementById('canvas');
       photo = document.getElementById('photo');
@@ -65,7 +65,7 @@ $(function() {
 
     }
 
-    window.addEventListener('load', startup, false);
+    window.addEventListener('load', startVideo, false);
 
     /**
      * Websockets.
@@ -119,6 +119,7 @@ $(function() {
     }
 
     var picInterval;
+    $('#stop').prop('disabled', true);
 
     /**
      * Form.
@@ -137,6 +138,7 @@ $(function() {
       }
       console.log('tags : ', tags, tags.length)
       if (tags && tags.length > 0) {
+        $('#stop').prop('disabled', false);
         picInterval = setInterval(function() {
           sendPictureAndTags(tags);
         }, dtpic);
@@ -147,6 +149,7 @@ $(function() {
 
     $('#stop').click(function(ev) {
       ev.preventDefault();
+      $('#stop').prop('disabled', true);
       if (picInterval) {
         clearInterval(picInterval);
       }
