@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>clarifai-go-webcam</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="public/main.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="public/main.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+          <form action="">
+            <div class="form-group">
+              <input type="text" class="form-control" name="tags" id="url" placeholder="Enter tags separated with ," value="">
+            </div>
+            <button type="submit" id="submit" class="btn btn-success">Track tags</button>
+            <button type="submit" id="stop" class="btn btn-danger">Stop streaming</button>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4>Realtime Webcam</h4>
+              </div>
+              <div class="panel-body">
+                <div class="camera">
+                  <video id="video">Video stream not available.</video>
+                </div>
+                <canvas id="canvas"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h4>Last tag detected</h4>
+              </div>
+              <div class="panel-body">
+                <div class="output">
+                  <img id="photo">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
