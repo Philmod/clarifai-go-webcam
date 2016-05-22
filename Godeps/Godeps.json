@@ -1,0 +1,25 @@
+{
+	"ImportPath": "github.com/philmod/clarifai-go-webcam",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v70",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.10.0-16-gcd7d1bb",
+			"Rev": "cd7d1bbe41066b6c1f19780f895901052150a575"
+		},
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Rev": "1f512fc3f05332ba7117626cdfb4e07474e58e60"
+		},
+		{
+			"ImportPath": "github.com/philmod/clarifai-go",
+			"Comment": "v1.2.0-7-g82fb0f9",
+			"Rev": "82fb0f932cfcfb14a8d492a773db2c193591714a"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "d4feaf1a7e61e1d9e79e6c4e76c6349e9cab0a03"
+		}
+	]
+}

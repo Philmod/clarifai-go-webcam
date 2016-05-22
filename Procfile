@@ -1,0 +1,1 @@
+web: clarifai-go-webcam
