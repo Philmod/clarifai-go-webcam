@@ -1,3 +1,2 @@
-client.go
-hub.go
-backup/
+public/bootstrap.min.css
+public/jquery-1.9.1.min.js

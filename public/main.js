@@ -4,7 +4,7 @@ $(function() {
      * WebRTC.
      */
     var streaming = false;
-    var width = 640;
+    var width = 320;
     var height = 0;
     var dtpic = 2000;
 
@@ -25,7 +25,7 @@ $(function() {
                              navigator.msGetUserMedia);
 
       if (!navigator.getMedia) {
-        alert('Browser not supported.');
+        alert('Browser does not support webRTC.');
       }
 
       navigator.getMedia({
@@ -71,7 +71,7 @@ $(function() {
      * Websockets.
      */
     if (!window["WebSocket"]) {
-        return;
+        alert('Browser does not support WebSocket.');
     }
 
     var content = $("#content");
@@ -86,10 +86,15 @@ $(function() {
     };
 
     conn.onmessage = function(msg) {
-        console.log('Message in : ', msg);
-        // if (e.data != content.val()) {
-        //     content.val(e.data);
-        // }
+        var message = JSON.parse(msg.data);
+        var tags = message.Tags;
+        var pic = message.Pic;
+        if (tags && tags.length > 0) {
+          var photo = document.getElementById('photo');
+          photo.src = pic;
+          var headerMessage = 'Last tag' + ((tags.length > 1) ? 's' : '') + ' detected: ' + tags.join(', ');
+          $('#tags-header').html(headerMessage);
+        }
     };
 
     /**
@@ -111,11 +116,10 @@ $(function() {
       var pic = getPicture();
       var message = {
         type: 'picture',
-        data: pic,
+        pic: pic,
         tags: tags
       };
-      console.log('Send this pic : ', message);
-      conn.send(message);
+      conn.send(JSON.stringify(message));
     }
 
     var picInterval;
@@ -136,7 +140,7 @@ $(function() {
       if (picInterval) {
         clearInterval(picInterval);
       }
-      console.log('tags : ', tags, tags.length)
+
       if (tags && tags.length > 0) {
         $('#stop').prop('disabled', false);
         picInterval = setInterval(function() {
