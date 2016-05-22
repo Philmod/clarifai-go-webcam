@@ -74,8 +74,13 @@ $(function() {
         alert('Browser does not support WebSocket.');
     }
 
-    var content = $("#content");
-    var conn = new WebSocket('ws://' + window.location.host + '/ws');
+    var url = window.location.href;
+    var arr = url.split("/");
+    var protocol = 'ws';
+    if (arr[0] === 'https') {
+      protocol = 'wss';
+    }
+    var conn = new WebSocket(protocol + '://' + window.location.host + '/ws');
 
     conn.onopen = function() {
         console.log('Connection open.');
