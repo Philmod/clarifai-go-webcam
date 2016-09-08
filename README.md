@@ -9,6 +9,7 @@ Web page that captures images from your webcam and tag them using Clarifai API. 
 - Create a [Clarifai](https://developer.clarifai.com/account/applications/) app
 - Set `CLARIFAI_ID` and `CLARIFAI_SECRET` environment variables
 - `go run main.go`
+- In your browser, go to "localhost:8080"
 
 ## Todo
 - Tests
